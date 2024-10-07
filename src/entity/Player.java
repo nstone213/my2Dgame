@@ -1,6 +1,7 @@
 package src.entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -22,6 +23,8 @@ public class Player extends Entity{
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
+
+        solidArea = new Rectangle(8, 16, 32, 32);
 
         setDefaultValues();
         getPlayerImage();
@@ -68,6 +71,8 @@ public class Player extends Entity{
                 }
                 spriteCounter = 0;
             }
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
         }
         if(keyH.upPressed == true) {
             direction = "up";
